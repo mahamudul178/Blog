@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: myapp_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=myapp_db
+      - POSTGRES_USER=myapp_user
+      - POSTGRES_PASSWORD=myapp_password
+    ports:
+      - "5432:5432"
+    networks:
+      - myapp_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myapp_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Django Backend
+  backend:
+    build: ./backend
+    container_name: myapp_backend
+    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 --reload
+    volumes:
+      - ./backend:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - DATABASE_URL=postgresql://myapp_user:myapp_password@db:5432/myapp_db
+      - ALLOWED_HOSTS=localhost,127.0.0.1,backend
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - myapp_network
+
+  # React Frontend
+  frontend:
+    build: ./frontend
+    container_name: myapp_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - myapp_network
+    environment:
+      - VITE_API_URL=http://localhost:8000
+
+# Volumes
+volumes:
+  postgres_data:
+    driver: local
+  static_volume:
+    driver: local
+  media_volume:
+    driver: local
+
+# Networks
+networks:
+  myapp_network:
+    driver: bridge
