@@ -21,7 +21,7 @@
 -  **Modern UI** - Beautiful, responsive design with Tailwind CSS
 - ⚡ **Fast Performance** - Optimized queries and caching
 
-##  Tech Stack
+
 
 ### Backend
 - **Framework:** Django 4.2.7
@@ -48,9 +48,13 @@
 - **Version Control:** Git & GitHub
 
 
+![alt text](picture/1.png)
+![alt text](picture/2.png)
+![alt text](picture/3.png)
+![alt text](picture/4.png)
+
 
 ### Prerequisites
-
 - Python 3.11+
 - Node.js 18+
 - PostgreSQL (optional, can use SQLite for development)
@@ -136,18 +140,6 @@ docker-compose exec backend python manage.py createsuperuser
 # Frontend: http://localhost:3000
 ```
 
-## 📦 Installation
-
-### Detailed Installation Steps
-
-#### Backend Installation
-
-1. **Create and activate virtual environment**
-```bash
-python -m venv myenv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-```
 
 2. **Install Python dependencies**
 ```bash
@@ -207,7 +199,7 @@ npm run dev
 npm run build
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Backend Configuration
 
@@ -237,12 +229,6 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 VITE_API_URL=http://localhost:8000
 ```
 
-### Docker Configuration
-
-**File:** `docker-compose.yml`
-
-See the docker-compose.yml file for container configuration.
-
 
 ### Commenting on a Post
 
@@ -262,7 +248,7 @@ See the docker-compose.yml file for container configuration.
 1. Click the bookmark icon (📑/🔖)
 2. Access bookmarks from "Bookmarks" page
 
-## 📚 API Documentation
+##  API Documentation
 
 ### Authentication Endpoints
 
@@ -381,7 +367,7 @@ Authorization: Bearer {access_token}
 
 For complete API documentation, visit: `http://localhost:8000/swagger/`
 
-## 🧪 Testing
+## Testing
 
 ### Backend Tests
 
@@ -422,7 +408,7 @@ npm test -- --watch
 ./run_tests.sh
 ```
 
-## 🚢 Deployment
+##  Deployment
 
 ### Backend Deployment (Railway/Render)
 
@@ -499,15 +485,15 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+##  Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@yourusername](https://github.com/mahamudul178)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/md-mahamudul-hasan-04b915262/)
+
+- Email: mahamudul.ice.pust.12@gmail.com
 
 ## 🙏 Acknowledgments
-
 - Django REST Framework documentation
 - React documentation
 - Tailwind CSS
